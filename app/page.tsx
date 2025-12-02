@@ -47,7 +47,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50">
-      <Navbar />
+      <Navbar
+        boardTitle="Dashboard"
+        onEditBoard={() => { }}
+        onFilterClick={() => { }}
+        filterCount={0}
+      />
+
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">

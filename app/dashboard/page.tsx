@@ -128,7 +128,7 @@ export default function DashboardPage() {
                         {user?.firstName ?? user?.emailAddresses[0].emailAddress}! 👋
                     </h1>
                     <p className="text-gray-600">
-                        Here's the latest on your boards.
+                        Here&apos;s the latest on your boards.
                     </p>
                 </div>
 

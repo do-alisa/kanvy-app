@@ -23,9 +23,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useBoard } from "@/lib/hooks/useBoards";
 import { ColumnWithTasks, Task } from "@/lib/supabase/models";
 import { DialogTrigger } from "@radix-ui/react-dialog";
-import { Calendar, MoreHorizontal, Plus, Pointer, User } from "lucide-react";
+import { Calendar, MoreHorizontal, Plus, User } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import type { FormEvent } from "react";
 import {
     DndContext,
     DragEndEvent,
@@ -53,7 +54,7 @@ function DroppableColumn({
 }: {
     column: ColumnWithTasks;
     children: React.ReactNode;
-    onCreateTask: (taskData: any) => Promise<void>;
+    onCreateTask: (event: FormEvent<HTMLFormElement>) => Promise<void>;
     onEditColumn: (column: ColumnWithTasks) => void;
 }) {
     const { setNodeRef, isOver } = useDroppable({ id: column.id });
@@ -144,7 +145,8 @@ function DroppableColumn({
                                         <SelectContent>
                                             {["low", "medium", "high"].map((priority, key) => (
                                                 <SelectItem key={key} value={priority}>
-                                                    {priority.charAt(0).toUpperCase() + priority.slice(1)}
+                                                    {priority.charAt(0).toUpperCase() +
+                                                        priority.slice(1)}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
@@ -360,7 +362,7 @@ export default function BoardPage() {
         });
     }
 
-    async function handleUpdateBoard(e: React.FormEvent) {
+    async function handleUpdateBoard(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (!newTitle.trim() || !board) return;
@@ -389,7 +391,7 @@ export default function BoardPage() {
         await createRealTask(targetColumn.id, taskData);
     }
 
-    async function handleCreateTask(e: any) {
+    async function handleCreateTask(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const taskData = {
@@ -506,7 +508,7 @@ export default function BoardPage() {
         }
     }
 
-    async function handleCreateColumn(e: React.FormEvent) {
+    async function handleCreateColumn(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (!newColumnTitle.trim()) return;
@@ -517,7 +519,7 @@ export default function BoardPage() {
         setIsCreatingColumn(false);
     }
 
-    async function handleUpdateColumn(e: React.FormEvent) {
+    async function handleUpdateColumn(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (!editingColumnTitle.trim() || !editingColumn) return;
@@ -621,8 +623,8 @@ export default function BoardPage() {
                                             key={key}
                                             type="button"
                                             className={`w-8 h-8 rounded-full ${color} ${color === newColor
-                                                ? "ring-2 ring-offset-2 ring-gray-900"
-                                                : ""
+                                                    ? "ring-2 ring-offset-2 ring-gray-900"
+                                                    : ""
                                                 } `}
                                             onClick={() => setNewColor(color)}
                                         />

@@ -101,11 +101,11 @@ export default function DashboardPage() {
     };
 
     if (loading) {
-      return (
-        <div>
-          <Loader2 /> <span>Loading your boards...</span>
-        </div>
-      );
+        return (
+            <div>
+                <Loader2 /> <span>Loading your boards...</span>
+            </div>
+        );
     }
 
     if (error) {
@@ -119,7 +119,13 @@ export default function DashboardPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Navbar />
+            <Navbar
+                boardTitle="Dashboard"
+                onEditBoard={() => { }}
+                onFilterClick={() => { }}
+                filterCount={0}
+            />
+
 
             <main className="container mx-auto px-4 py-6 sm:py-8">
                 <div className="mb-6 sm:mb-8">

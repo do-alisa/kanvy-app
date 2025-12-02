@@ -1,4 +1,9 @@
+# Kanvy – Trello-Style Productivity App
+
+**Live Demo:** [https://your-vercel-url.vercel.app  ](https://kanvy-app-iota.vercel.app/)
+
 <img width="1869" height="1167" alt="download" src="https://github.com/user-attachments/assets/e4fe3ad0-abc6-4c7d-b403-10c52289dc91" />
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
